@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const port = 8000;
 const {MONGOURI} = require('./keys');
+const usersRoutes = require('./routes/users');
 const eventRoutes = require('./routes/events');
+const communityRoutes = require('./routes/community');
 
 const app = express();
 app.use(cors())
@@ -12,6 +14,8 @@ app.use(express.json()); // body-parser
 
 
 app.use('/api', eventRoutes);
+app.use('/api', usersRoutes);
+app.use('/api', communityRoutes);
 
 mongoose.connect(MONGOURI, {
     useUnifiedTopology: true,
