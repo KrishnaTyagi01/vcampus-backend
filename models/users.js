@@ -20,6 +20,9 @@ const userSchema = new Schema({
     type: String,
     default: "none",
   },
+  phone: {
+    type: String
+  },
   collegeId: {
     type: ObjectId,
     default: null,
@@ -27,6 +30,9 @@ const userSchema = new Schema({
   emailVerified: {
     type: String,
     default: null
+  },
+  roll: {
+    type: String
   }
 });
 

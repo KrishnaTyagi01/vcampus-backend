@@ -19,9 +19,11 @@ users.find({email: email})
 }
 
 exports.updateUser = (req, res) => {
-    const email = "tyagikrishna38@gmail.com";
+    const { name, email,image,phone,college,roll} = req.body;
+    console.log(email,name,image,college,roll, phone)
 
-    users.updateOne({email:email}, {$set: {college: 'ITUS'}}, function(err, user){
+
+    users.updateOne({email:email}, {$set: {college: college, name:name, image:image, roll:roll, phone:phone}}, function(err, user){
         if(err){
             console.log(err);
             res.json(err);
