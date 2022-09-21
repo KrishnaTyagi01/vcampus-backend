@@ -3,7 +3,10 @@ const Event = require('../models/events');
 
 exports.addEvent = (req, res) => {
     console.log(req.body);
-    const {eventName, lastRegistrationDate,namereq, phonereq,rollnoreq,emailreq,yearreq,sectionreq,deptreq,otherDetails} = req.body;
+    const {eventName, lastRegistrationDate,checkedValues,otherDetails} = req.body;
+    const {namereq, phonereq,rollnoreq,emailreq,yearreq,sectionreq,deptreq} = checkedValues;
+    
+    console.log(eventName, lastRegistrationDate,checkedValues,otherDetails);
 
     if (!eventName || !lastRegistrationDate) {
         return res.json({ error: "Provide all the necessary Information" });
@@ -19,6 +22,7 @@ exports.addEvent = (req, res) => {
     })
     .catch(err =>  {
         console.log("error:", err)
-        res.json({ error: err })})
+        res.json({ error: err })
+    })
     
 }
