@@ -10,6 +10,9 @@ const EventSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
+    eventDetails: {
+        type: String,
+    },
     namereq: {
         type: Boolean
     },
