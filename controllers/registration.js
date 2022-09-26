@@ -20,3 +20,16 @@ exports.register = (req, res) => {
 
     // res.send("ok")
 }
+
+exports.getAllRegistrations = (req, res) => {
+    registrations.find()
+    .exec((err, result) => {
+        if(err || !result){
+            console.log(err)
+            res.json({error: err});
+
+        }
+
+        res.json(result)
+    })
+}
