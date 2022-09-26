@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const {ObjectId} = mongoose.Schema.Types;
+const users = require('../models/users');
+
 
 const EventSchema = new mongoose.Schema({
     eventName:{
@@ -39,7 +41,12 @@ const EventSchema = new mongoose.Schema({
             type: String,
             default:''
         }
-    ]
+    ],
+    registrations: [{
+        type: ObjectId,
+        ref: users,
+        default: ""
+    }]
 }, {timestamps: true})
 
 module.exports = mongoose.model("Event", EventSchema);

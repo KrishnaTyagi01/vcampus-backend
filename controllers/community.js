@@ -11,12 +11,12 @@ exports.createNew = (req, res) =>{
 
     com.save()
     .then(result => {
-        console.log(result);
+        
         res.json({community: result})
     })
     .catch(err => {
-        console.log(err);
-        res.json({error: err})
+        
+        res.status(400).json({error: err})
     })
 
 }
