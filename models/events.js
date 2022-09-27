@@ -8,6 +8,10 @@ const EventSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    createdBy: {
+        type: String, 
+        required: true
+    },
     lastRegistrationDate:{
         type: Date,
         required: true
