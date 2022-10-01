@@ -1,4 +1,5 @@
 const Event = require('../models/events');
+const registrations = require('../models/registration');
 
 
 exports.addEvent = (req, res) => {
@@ -38,3 +39,30 @@ exports.getAllEvents = (req, res) => {
 }
 
 
+
+
+exports.deleteEvent = (req, res) =>{
+    const {eventId} = req.body;
+  
+    registrations.deleteMany({event: eventId})
+    .then((res)=> {
+        console.log("reg delete: ", res)
+    })
+    .catch(err => console.log(err))
+
+    Event.findById(eventId)
+    .exec((err, event)=>{
+      if(err || !event){
+        return res.status(422).json({error: err})
+      }
+  
+      event.remove((error, deletedEvent)=>{
+        if(error){
+          return res.status(400).json({error: error})
+        }
+  
+        res.json({message: "Event deleted successfully"});
+      })
+      
+    })
+  }
