@@ -4,14 +4,14 @@ const registrations = require('../models/registration');
 
 exports.addEvent = (req, res) => {
     console.log(req.body);
-    const {eventName, lastRegistrationDate,eventDetails,checkedValues,otherDetails, createdBy} = req.body;
+    const {eventName, lastRegistrationDate,eventDetails,checkedValues,otherDetails, createdBy, college} = req.body;
     const {namereq, phonereq,rollnoreq,emailreq,yearreq,sectionreq,deptreq} = checkedValues;
 
     if (!eventName || !lastRegistrationDate) {
         return res.json({ error: "Provide all the necessary Information" });
       }
 
-    const event = new Event({eventName, lastRegistrationDate,eventDetails,namereq, phonereq,rollnoreq,emailreq,yearreq,sectionreq,deptreq,otherDetails,createdBy})  
+    const event = new Event({eventName,college, lastRegistrationDate,eventDetails,namereq, phonereq,rollnoreq,emailreq,yearreq,sectionreq,deptreq,otherDetails,createdBy})  
     event.save()
     .then(result => {
         console.log("result1", result)

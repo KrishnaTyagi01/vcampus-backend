@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const {ObjectId} = mongoose.Schema.Types;
 const users = require('../models/users');
 
-
 const EventSchema = new mongoose.Schema({
     eventName:{
         type: String,
@@ -11,6 +10,9 @@ const EventSchema = new mongoose.Schema({
     createdBy: {
         type: String, 
         required: true
+    },
+    college: {
+        type: String,
     },
     lastRegistrationDate:{
         type: Date,
