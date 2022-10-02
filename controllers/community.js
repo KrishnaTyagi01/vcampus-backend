@@ -12,11 +12,11 @@ exports.createNew = (req, res) =>{
     com.save()
     .then(result => {
         
-        res.json({community: result})
+        res.json({community: result, comcreated: true})
     })
     .catch(err => {
         
-        res.status(400).json({error: err})
+        res.status(400).json({error: err, comcreated: false})
     })
 
 }
@@ -36,5 +36,24 @@ exports.getAllCommunities = (req, res) => {
         res.json({communities: com})
 
     })
+
+}
+
+
+exports.isUnique = (req, res) => {
+    const {comName} = req.params;
+
+    Community.countDocuments({
+        communityName: comName}, function (err, count){
+            console.log("count: ", count) 
+        if(count>0){
+            //document exists });
+            res.json({isValid: false})
+        } else {
+            res.json({isValid: true});
+        }
+    }); 
+
+
 
 }
