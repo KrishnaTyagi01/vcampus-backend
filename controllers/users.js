@@ -10,7 +10,7 @@ users.find({email: email})
     if(err || !users)
     {
         console.log("error: ",err)
-        return err
+        res.json({error:err})
     }
     res.json(users); 
 })
@@ -30,4 +30,17 @@ exports.updateUser = (req, res) => {
     })
     
     
+}
+
+
+exports.getAllUsers = (req, res) => {
+    users.find()
+    .exec((err, users) => {
+        if(err || !users)
+        {
+            console.log("error: ",err)
+            res.json({error:err})
+        }
+        res.json(users); 
+    })
 }
