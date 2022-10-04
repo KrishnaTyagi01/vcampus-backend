@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const port = 8000;
+const port = process.env.PORT || 8000;
 const {MONGOURI} = require('./keys');
 const usersRoutes = require('./routes/users');
 const eventRoutes = require('./routes/events');
