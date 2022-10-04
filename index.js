@@ -19,7 +19,7 @@ app.use('/api', usersRoutes);
 app.use('/api', communityRoutes);
 app.use('/api', registrationRoutes);
 
-mongoose.connect(MONGOURI, {
+mongoose.connect(process.env.MONGODB_URI || MONGOURI, {
     useUnifiedTopology: true,
     useNewUrlParser: true
 })
