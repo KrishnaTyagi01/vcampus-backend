@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const port = process.env.PORT || 8000;
-const {MONGOURI} = require('./keys');
 const usersRoutes = require('./routes/users');
 const eventRoutes = require('./routes/events');
 const communityRoutes = require('./routes/community');
@@ -19,7 +18,7 @@ app.use('/api', usersRoutes);
 app.use('/api', communityRoutes);
 app.use('/api', registrationRoutes);
 
-mongoose.connect(process.env.MONGODB_URI || MONGOURI, {
+mongoose.connect(process.env.MONGODB_URI, {
     useUnifiedTopology: true,
     useNewUrlParser: true
 })
